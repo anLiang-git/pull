@@ -1,0 +1,19 @@
+form {
+    width: 100%;
+    padding-top: 32px;
+
+    mat-form-field {
+        width: 100%;
+    }
+}
+.title{
+    width: 100%;
+    text-align: left;
+    font-size: 1.2rem;
+}
+.sub{
+    text-align: end;
+}
+textarea{
+    min-height: 30px;
+}

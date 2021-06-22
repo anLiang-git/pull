@@ -1,0 +1,67 @@
+<div class="title">Entry Information</div>
+<form [formGroup]="form" (ngSubmit)="form.valid && loginUser()">
+    <fieldset [disabled]="loginLoading">
+        <mat-form-field>
+            <input matInput type="text" placeholder="name" formControlName="udpnPeerName" required>
+            <mat-error *ngIf="form.controls['udpnPeerName'].hasError('required')" class="form-control-feedback">
+                Name is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Number</mat-label>
+            <input matInput disabled value="0x_dweafaWDDIKJMKJMKSAJDUIOUIO">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="node title" formControlName="udpnPeerTitle" required>
+            <mat-error *ngIf="form.controls['udpnPeerTitle'].hasError('required')" class="form-control-feedback">
+                nodeTitle is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select [(value)]="typeSelected" formControlName="udpnPeerType"> 
+            <mat-option value="1">BN</mat-option>
+            <mat-option value="5">TN</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Currency</mat-label>
+            <mat-select [(value)]="currencySelected" formControlName="udpnPeerCurrencyType"> 
+            <mat-option value="USDT">USDT</mat-option>
+            <mat-option value="USDT">USDC</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Rate</mat-label>
+            <mat-select [(value)]="rateSelected" formControlName="udpnPeerRate"> 
+            <mat-option value="0.1">0.01%</mat-option>
+            <mat-option value="0.2">0.02%</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="text" placeholder="Address" formControlName="udpnPeerAddr" required>
+            <mat-error *ngIf="form.controls['udpnPeerAddr'].hasError('required')" class="form-control-feedback">
+                Address is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Introduction</mat-label>
+            <textarea matInput formControlName="udpnPeerDesc"  placeholder="Description" ></textarea>
+            <mat-error *ngIf="form.controls['udpnPeerDesc'].hasError('required')" class="form-control-feedback" required>
+                Description is required
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>DID</mat-label>
+            <textarea matInput formControlName="udpnDidDocument"  placeholder="DID" (click)='upFile.click()'  readonly></textarea>
+            <mat-error *ngIf="form.controls['udpnDidDocument'].hasError('required')" class="form-control-feedback" required>
+                DID is required
+            </mat-error>
+        </mat-form-field>
+        <input type="file" hidden #upFile  (change)="uploadFile($event)">
+        <div class="sub">
+            <button type="submit" [disabled]="loginLoading || form.invalid" mat-raised-button color="primary">submit</button>
+        </div>
+
+    </fieldset>
+</form>
